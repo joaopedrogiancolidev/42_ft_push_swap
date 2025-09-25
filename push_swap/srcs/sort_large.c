@@ -6,11 +6,10 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:54:13 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/24 18:20:35 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:00:24 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Implementação básica da mediana
 #include "../includes/push_swap.h"
 
 static int    find_median(t_stack_node *stack)
@@ -36,7 +35,6 @@ static int    find_median(t_stack_node *stack)
         array[i++] = current->value;
         current = current->next;
     }
-    
     for (i = 0; i < size - 1; i++)
     {
         for (int j = 0; j < size - i - 1; j++)
@@ -49,7 +47,6 @@ static int    find_median(t_stack_node *stack)
             }
         }
     }
-    
     median = array[size / 2];
     free(array);
     return (median);
@@ -81,7 +78,6 @@ static void    push_to_b_until_median(t_stack_node **a, t_stack_node **b, int me
     }
 }
 
-// VERSÃO SIMPLES E FUNCIONAL - use chunks menores para 500 números
 void    sort_large(t_stack_node **a, t_stack_node **b)
 {
     int    median;
@@ -91,28 +87,19 @@ void    sort_large(t_stack_node **a, t_stack_node **b)
         return;
     
     size = stack_size(*a);
-    
-    // Estratégia: dividir em 2 partes para 100 números, 3 partes para 500
     int parts = (size <= 100) ? 2 : 3;
-    
     for (int part = 0; part < parts && stack_size(*a) > 3; part++)
     {
         median = find_median(*a);
         push_to_b_until_median(a, b, median);
     }
-    
-    // Ordenar o que sobrou em A
     if (!is_sorted(*a))
         sort_small(a, b);
-    
-    // Trazer de volta de B de forma mais eficiente
     while (*b)
     {
         t_stack_node *max_b = find_max_node(*b);
         int pos = find_node_position(*b, max_b);
         int b_size = stack_size(*b);
-        
-        // Estratégia mais inteligente: escolher a direção com menos rotações
         if (pos <= b_size / 2)
         {
             for (int i = 0; i < pos; i++)
@@ -123,15 +110,11 @@ void    sort_large(t_stack_node **a, t_stack_node **b)
             for (int i = 0; i < b_size - pos; i++)
                 rrb(b, true);
         }
-        
         pa(a, b, true);
     }
-    
-    // Rotação final para deixar o menor no topo
     t_stack_node *min_a = find_min_node(*a);
     int pos = find_node_position(*a, min_a);
     int a_size = stack_size(*a);
-    
     if (pos <= a_size / 2)
     {
         for (int i = 0; i < pos; i++)

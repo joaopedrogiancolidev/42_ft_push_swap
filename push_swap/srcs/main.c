@@ -6,9 +6,10 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 23:19:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/24 18:06:09 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:10:24 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/push_swap.h"
 
@@ -30,17 +31,6 @@ void    free_stack(t_stack_node **stack)
     *stack = NULL;
 }
 
-void	print_stack(t_stack_node *stack, char *name)
-{
-	ft_printf("%s: ", name);
-	while (stack)
-	{
-		ft_printf("%d ", stack->value);
-		stack = stack->next;
-	}
-	ft_printf("\n");
-}
-
 int     main(int argc, char **argv)
 {
     t_stack_node    *a;
@@ -58,23 +48,26 @@ int     main(int argc, char **argv)
         args = ft_split(argv[1], ' ');
         if (!args || !args[0])
         {
-            // CORREÇÃO AQUI: Se split falhou ou está vazio, dá Error
             write(2, "Error\n", 6);
-            if (args)  // Libera memória se alocou algo
-                free_split(args);
+            if (args) free_split(args);
             return (1);
         }
-        validate_arguments(args);
+        if (!validate_arguments(args) || has_duplicates(args))
+        {
+            free_split(args);
+            return (1);
+        }
         init_stack_a(&a, args);
         free_split(args);
     }
     else
     {
-        validate_arguments(argv);
+        if (!validate_arguments(argv + 1) || has_duplicates(argv + 1))
+            return (1);
         init_stack_a(&a, argv + 1);
     }
     
-    check_duplicates(a);
+    check_duplicates(a); // Verificar duplicatas na lista ligada
     
     if (!is_sorted(a))
     {
@@ -87,11 +80,9 @@ int     main(int argc, char **argv)
         else
             sort_large(&a, &b);
     }
-    
     free_stack(&a);
     return (0);
 }
-
 
 // int		main(int argc, char **argv)
 // {

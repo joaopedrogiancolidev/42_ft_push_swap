@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:09:59 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/24 18:03:04 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:17:52 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack_node
 } t_stack_node;
 
 // Stack initialization
+void    free_stack(t_stack_node **stack);
 void            init_stack_a(t_stack_node **a, char **argv);
 void            append_node(t_stack_node **stack, int n);
 
@@ -41,12 +42,12 @@ t_stack_node    *find_min_node(t_stack_node *stack);
 int             find_node_position(t_stack_node *stack, t_stack_node *target);
 
 // Error handling
-void            error_exit(t_stack_node **a, t_stack_node **b);
-void            free_stack(t_stack_node **stack);
-void            check_duplicates(t_stack_node *a);
-void            validate_arguments(char **argv);
-int             is_valid_number(char *str);
-void            free_split(char **split);
+int     is_valid_number(char *str);
+int     validate_arguments(char **argv);
+int     has_duplicates(char **argv);
+void    check_duplicates(t_stack_node *a);
+void    error_exit(t_stack_node **a, t_stack_node **b);
+void    free_split(char **split);
 
 // Operations
 void            sa(t_stack_node **a, bool print);

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:22:48 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/24 16:58:23 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:01:03 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ bool    is_sorted(t_stack_node *stack)
     return (true);
 }
 
-// CORREÇÃO DA FUNÇÃO find_last_node
 t_stack_node    *find_last_node(t_stack_node *stack)
 {
     if (!stack)

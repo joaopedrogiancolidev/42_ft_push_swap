@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:12:14 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/24 16:39:44 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:01:05 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,10 @@ void	sort_three(t_stack_node **a)
 		return;
 		
 	biggest = find_max_node(*a);
-	
-	// Se o maior está no topo, rotaciona
 	if (biggest == *a)
 		ra(a, true);
-	// Se o maior está no meio, reverse rotate
 	else if ((*a)->next == biggest)
 		rra(a, true);
-	
-	// Se os dois primeiros estão fora de ordem, swap
 	if ((*a)->value > (*a)->next->value)
 		sa(a, true);
 }
