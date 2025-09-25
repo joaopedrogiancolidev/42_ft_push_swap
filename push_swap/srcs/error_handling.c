@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 15:11:38 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 16:16:31 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:14:35 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int    is_valid_number(char *str)
         
     while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
         i++;
-        
+
     if (str[i] == '\0')
         return (0);
         
@@ -81,11 +81,11 @@ int    has_duplicates(char **argv)
     i = 0;
     while (argv[i])
     {
-        value_i = ft_atoi(argv[i]);
+        value_i = ft_atol(argv[i]);
         j = i + 1;
         while (argv[j])
         {
-            value_j = ft_atoi(argv[j]);
+            value_j = ft_atol(argv[j]);
             if (value_i == value_j)
             {
                 write(2, "Error\n", 6);

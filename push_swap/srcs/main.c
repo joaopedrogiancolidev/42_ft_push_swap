@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 23:19:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 16:10:24 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:18:33 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int     main(int argc, char **argv)
     b = NULL;
     
     if (argc == 1)
+    {
+        write(2, "Error\n", 6);
         return (0);
-    
+    }
     if (argc == 2)
     {
         args = ft_split(argv[1], ' ');
@@ -52,6 +54,21 @@ int     main(int argc, char **argv)
             if (args) free_split(args);
             return (1);
         }
+
+                int valid_count = 0;
+        for (int i = 0; args[i]; i++)
+        {
+            if (is_valid_number(args[i]))
+                valid_count++;
+        }
+        
+        if (valid_count == 0)
+        {
+            write(2, "Error\n", 6);
+            free_split(args);
+            return (1);
+        }
+        
         if (!validate_arguments(args) || has_duplicates(args))
         {
             free_split(args);
@@ -67,7 +84,7 @@ int     main(int argc, char **argv)
         init_stack_a(&a, argv + 1);
     }
     
-    check_duplicates(a); // Verificar duplicatas na lista ligada
+    check_duplicates(a);
     
     if (!is_sorted(a))
     {

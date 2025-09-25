@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:54:12 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 16:15:28 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:27:30 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,41 @@ void     append_node(t_stack_node **stack, int n)
     }
 }
 
-// int     ft_atoi(const char *str)
-// {
-//     long    num;
-//     int     sign;
-//     int     i;
+long     ft_atol(const char *str)
+{
+    long    num;
+    int     sign;
+    int     i;
 
-//     num = 0;
-//     sign = 1;
-//     i = 0;
+    num = 0;
+    sign = 1;
+    i = 0;
     
-//     while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-//         i++;
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
         
-//     if (str[i] == '-')
-//         sign = -1;
+    if (str[i] == '-')
+        sign = -1;
         
-//     if (str[i] == '-' || str[i] == '+')
-//         i++;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
         
-//     while (str[i] >= '0' && str[i] <= '9')
-//     {
-//         num = num * 10 + (str[i] - '0');
-//         i++;
-//         if (num > INT_MAX || (sign == -1 && num > (long)INT_MAX + 1))
-//             return (2147483648);
-//     }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        if (num > (LONG_MAX - (str[i] - '0')) / 10)
+        {
+            if (sign == 1)
+                return (LONG_MAX);
+            else
+                return (LONG_MIN);
+        }
+        
+        num = num * 10 + (str[i] - '0');
+        i++;
+    }
     
-//     return (num * sign);
-// }
+    return (num * sign);
+}
 
 void    init_stack_a(t_stack_node **a, char **argv)
 {
@@ -78,7 +84,7 @@ void    init_stack_a(t_stack_node **a, char **argv)
     i = 0;
     while (argv[i])
     {
-        value = ft_atoi(argv[i]);
+        value = ft_atol(argv[i]);
         if (value > INT_MAX || value < INT_MIN)
             error_exit(a, NULL);
             
