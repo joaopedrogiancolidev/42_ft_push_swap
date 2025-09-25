@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:40:31 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 17:37:31 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:45:10 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,36 @@ static void		move_min_to_top(t_stack_node **a)
 	}
 }
 
-void	sort_small(t_stack_node **a, t_stack_node **b)
+void sort_small(t_stack_node **a, t_stack_node **b)
 {
-	int		size;
-
-	size = stack_size(*a);
-	if (size == 2)
-	{
-		if ((*a)->value > (*a)->next->value)
-			sa(a, true);
-		return ;
-	}
-	
-	while (stack_size(*a) > 3)
-	{
-		move_min_to_top(a);
-		pb(a, b, true);
-	}
-	
-	// ⚠️ CORREÇÃO: Só chamar sort_three se tiver exatamente 3 elementos
-	if (stack_size(*a) == 3)
-		sort_three(a);
-	
-	while (*b)
-		pa(a, b, true);
+    int size = stack_size(*a);
+    
+    if (size == 2)
+    {
+        if ((*a)->value > (*a)->next->value)
+            sa(a, true);
+        return;
+    }
+    
+    if (size == 3)
+    {
+        sort_three(a);
+        return;
+    }
+    
+    // For sizes 4 and 5
+    while (stack_size(*a) > 3)
+    {
+        move_min_to_top(a);
+        pb(a, b, true);
+    }
+    
+    // Sort the remaining 3 elements
+    sort_three(a);
+    
+    // Push back all elements from B
+    while (*b)
+        pa(a, b, true);
 }
 
 void	sort_any_size(t_stack_node **a, t_stack_node **b)

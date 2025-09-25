@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:09:59 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 17:45:29 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:44:42 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # include "../../libft/libft.h"
 # include "../../ft_printf/includes/ft_printf.h"
 
+
 typedef struct s_stack_node
 {
     int                     value;
-    int                     index;
+    int                     index;          // Add this field
     struct s_stack_node     *next;
     struct s_stack_node     *prev;
-} t_stack_node;
+}   t_stack_node;
 
 // Stack initialization
 void    free_stack(t_stack_node **stack);

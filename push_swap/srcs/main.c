@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 23:19:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 17:53:09 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:48:38 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int     main(int argc, char **argv)
     a = NULL;
     b = NULL;
     
-    debug_stack(a, "Antes da ordenação");
+    //debug_stack(a, "Antes da ordenação");
     if (argc == 1)
     {
         write(2, "Error\n", 6);
@@ -109,7 +109,7 @@ int     main(int argc, char **argv)
         else
             sort_large(&a, &b);
     }
-    debug_stack(a, "Depois da ordenação");
+    //debug_stack(a, "Depois da ordenação");
     free_stack(&a);
     return (0);
 }
