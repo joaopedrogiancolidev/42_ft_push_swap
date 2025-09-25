@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 23:19:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 17:18:33 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:53:09 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ void    free_stack(t_stack_node **stack)
     *stack = NULL;
 }
 
+void debug_stack(t_stack_node *stack, const char *name)
+{
+    ft_printf("%s: ", name);
+    while (stack)
+    {
+        ft_printf("%d ", stack->value);
+        stack = stack->next;
+    }
+    ft_printf("\n");
+}
+
 int     main(int argc, char **argv)
 {
     t_stack_node    *a;
@@ -40,6 +51,7 @@ int     main(int argc, char **argv)
     a = NULL;
     b = NULL;
     
+    debug_stack(a, "Antes da ordenação");
     if (argc == 1)
     {
         write(2, "Error\n", 6);
@@ -97,6 +109,7 @@ int     main(int argc, char **argv)
         else
             sort_large(&a, &b);
     }
+    debug_stack(a, "Depois da ordenação");
     free_stack(&a);
     return (0);
 }

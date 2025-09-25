@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:09:59 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 16:27:15 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:45:29 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,8 @@ void            sort_three(t_stack_node **a);
 void            sort_small(t_stack_node **a, t_stack_node **b);
 void            sort_large(t_stack_node **a, t_stack_node **b);
 
+
+//Debug
+
+void debug_stack(t_stack_node *stack, const char *name);
 #endif

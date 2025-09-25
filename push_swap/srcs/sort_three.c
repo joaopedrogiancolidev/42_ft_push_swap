@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:12:14 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 16:01:05 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:37:50 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest;
 
-	if (!a || !*a)
+	if (!a || !*a || stack_size(*a) != 3)  // ⚠️ CORREÇÃO
 		return;
 		
 	biggest = find_max_node(*a);
