@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 23:19:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/25 20:48:38 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:13:10 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ int     main(int argc, char **argv)
                 valid_count++;
         }
         
-        if (valid_count == 0)
-        {
-            write(2, "Error\n", 6);
-            free_split(args);
-            return (1);
-        }
+        // if (valid_count == 0)
+        // {
+        //     write(2, "Error\n", 6);
+        //     free_split(args);
+        //     return (1);
+        // }
         
         if (!validate_arguments(args) || has_duplicates(args))
         {
