@@ -6,41 +6,49 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:40:31 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/10/07 17:43:11 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/10/25 00:01:43 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	rotate_min_forward(t_stack_node **a, int position)
+{
+	int	i;
+
+	i = 0;
+	while (i < position)
+	{
+		ra(a, true);
+		i++;
+	}
+}
+
+static void	rotate_min_backward(t_stack_node **a, int size, int position)
+{
+	int	i;
+
+	i = size - position;
+	while (i > 0)
+	{
+		rra(a, true);
+		i--;
+	}
+}
 
 static void	move_min_to_top(t_stack_node **a)
 {
 	t_stack_node	*min;
 	int				size;
 	int				position;
-	int				i;
 
 	min = find_min_node(*a);
 	position = find_node_position(*a, min);
 	size = stack_size(*a);
-	i = 0;
 	if (position <= size / 2)
-	{
-		i = 0;
-		while (i < position)
-		{
-			ra(a, true);
-			i++;
-		}
-	}
+		rotate_min_forward(a, position);
 	else
-	{
-		i = size - position;
-		while (i > 0)
-		{
-			rra(a, true);
-			i--;
-		}
-	}
+		rotate_min_backward(a, size, position);
 }
 
 void	sort_small(t_stack_node **a, t_stack_node **b)

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:54:12 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/10/07 16:01:30 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/10/25 00:01:54 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,46 @@ void	append_node(t_stack_node **stack, int n)
 	}
 }
 
+static int	skip_whitespace_and_sign(const char *str, int *sign)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	*sign = 1;
+	if (str[i] == '-')
+		*sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	return (i);
+}
+
+static long	check_overflow(long num, char digit, int sign)
+{
+	if (num > (LONG_MAX - (digit - '0')) / 10)
+	{
+		if (sign == 1)
+			return (LONG_MAX);
+		else
+			return (LONG_MIN);
+	}
+	return (num * 10 + (digit - '0'));
+}
+
 long	ft_atol(const char *str)
 {
 	long	num;
 	int		sign;
 	int		i;
 
+	i = skip_whitespace_and_sign(str, &sign);
 	num = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (num > (LONG_MAX - (str[i] - '0')) / 10)
-		{
-			if (sign == 1)
-				return (LONG_MAX);
-			else
-				return (LONG_MIN);
-		}
-		num = num * 10 + (str[i] - '0');
+		num = check_overflow(num, str[i], sign);
+		if (num == LONG_MAX || num == LONG_MIN)
+			return (num);
 		i++;
 	}
 	return (num * sign);

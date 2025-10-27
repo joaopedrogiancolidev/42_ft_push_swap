@@ -10,12 +10,18 @@ INC_DIR = includes
 
 # Arquivos fonte
 SRC_COMMON = main.c \
+			parsing.c \
              stack_init.c \
              stack_utils.c \
+			 stack_utils_structs.c \
              error_handling.c \
+			 validation.c \
              sort_three.c \
              sort_small.c \
-             sort_large.c
+             sort_large.c \
+			 sort_large_moves.c \
+			 sort_large_rotate.c \
+			 sort_large_utils.c
 
 SRC_OPERATIONS = push.c \
                  swap.c \
