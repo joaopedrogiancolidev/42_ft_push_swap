@@ -1,19 +1,35 @@
+ <h1 align="center">Push_swap</h1>
+
+
 <div align="center">
-  <a href="https://github.com/joaopedrogiancolidev/42_ft_push_swap/stargazers">
-    <img src="https://img.shields.io/github/stars/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=33b2b6" alt="Stars">
-  </a>
-  <img src="https://img.shields.io/github/languages/code-size/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=87CEEB" alt="Code Size">
-  
-  <a href="https://www.linkedin.com/in/jpgusp/">
-    <img src="https://img.shields.io/badge/LinkedIn-João%20Pedro-blue?style=flat&logo=linkedin" alt="LinkedIn">
-  </a>
-  
-  <img src="https://img.shields.io/github/languages/top/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=4c1" alt="Top Language">
-  
-  <img src="https://img.shields.io/github/languages/count/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=33b2b6" alt="Language Count">
-  
-  <img src="https://img.shields.io/github/last-commit/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=e05d44" alt="Last Commit">
+
+  <h3>A little Sorting Algorithm written in C</h3>
+
 </div>
+
+
+<div align="center">
+
+  <a href="https://github.com/joaopedrogiancolidev/42_ft_push_swap/stargazers">
+  <img src="https://img.shields.io/github/stars/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=purple" alt="Stars">
+  </a>
+  <a href="https://github.com/joaopedrogiancolidev/42_ft_push_swap/network/members">
+  <img src="https://img.shields.io/github/forks/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=87CEEB" alt="Forks">
+  </a>
+
+  <img src="https://img.shields.io/github/languages/top/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=4c1" alt="Top Language">
+
+  <img src="https://img.shields.io/github/languages/count/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=yellow" alt="Language Count">
+
+  <img src="https://img.shields.io/github/last-commit/joaopedrogiancolidev/42_ft_push_swap?style=flat&color=e05d44" alt="Last Commit">
+  <a href="https://www.linkedin.com/in/jpgusp/">
+  <img src="https://img.shields.io/badge/LinkedIn-João%20Pedro-blue?style=flat&logo=linkedin" alt="LinkedIn">
+  </a>
+
+</div>
+
+
+--- 
 
 ---
 
